@@ -1,0 +1,143 @@
+{
+"fileTypes" : [
+	"pipp",
+	"pp"
+  ],
+  "name" : "pipp",
+  "patterns" : [
+	{
+	  "include" : "#main"
+	}
+  ],
+  "scopeName" : "source.pipp",
+  "uuid" : "",
+  "repository" : {
+	"main" : {
+	  "patterns" : [
+		{
+		  "match" : "((dim|use|unsigned|struct|enum|function)(?=[\\x{0020}\\x{005b}\\x{002c}\\x{003e}\\x{0029}]))",
+		  "name" : "keyword.other.pipp"
+		},
+		{
+		  "match" : "((real|integer|string|bool|long|self|any)(?=[\\x{0020}\\x{005b}\\x{002c}\\x{003e}\\x{0029}]))",
+		  "name" : "keyword.other.pipp"
+		},
+		{
+		  "match" : "(true|false|none)",
+		  "name" : "constant.language.pipp"
+		},
+		{
+		  "match" : "((?:0x|0o|0b)?[0-9]+)",
+		  "name" : "constant.numeric.pipp"
+		},
+		{
+		  "match" : "((if|else|while|for|step|until|continue|break|goto|match|return)(?=[\\x{0020}\\x{005b}\\x{002c}\\x{003e}\\x{0029}]))",
+		  "name" : "keyword.control.pipp"
+		},
+		{
+		  "include" : "#strings"
+		},
+		{
+		  "include" : "#comments"
+		},
+		{
+		  "match" : "((\\b[_A-Za-z][_A-Za-z0-9]*))",
+		  "name" : "variable.other.pipp"
+		}
+	  ]
+	},
+	"comments" : {
+	  "patterns" : [
+		{
+		  "match" : "(//.*)",
+		  "name" : "comment.line.double-slash.pipp"
+		},
+		{
+		  "begin" : "(\\/\\*.*)",
+		  "beginCaptures" : {
+			"1" : {
+			  "name" : "comment.block.documentation.pipp"
+			}
+		  },
+		  "contentName" : "comment.line.double-slash.pipp",
+		  "end" : "(.*\\*\\/)",
+		  "endCaptures" : {
+			"1" : {
+			  "name" : "comment.block.documentation.pipp"
+			}
+		  }
+		}
+	  ]
+	},
+	"comments__1" : {
+	  "patterns" : [
+	  ]
+	},
+	"strings" : {
+	  "patterns" : [
+		{
+		  "begin" : "(\")",
+		  "beginCaptures" : {
+			"1" : {
+			  "name" : "string.quoted.double.pipp"
+			}
+		  },
+		  "patterns" : [
+			{
+			  "include" : "#strings__1"
+			}
+		  ],
+		  "end" : "(\")",
+		  "endCaptures" : {
+			"1" : {
+			  "name" : "string.quoted.double.pipp"
+			}
+		  }
+		},
+		{
+		  "begin" : "(\")",
+		  "beginCaptures" : {
+			"1" : {
+			  "name" : "string.quoted.single.pipp"
+			}
+		  },
+		  "patterns" : [
+			{
+			  "include" : "#strings__2"
+			}
+		  ],
+		  "end" : "(\")",
+		  "endCaptures" : {
+			"1" : {
+			  "name" : "string.quoted.single.pipp"
+			}
+		  }
+		}
+	  ]
+	},
+	"strings__1" : {
+	  "patterns" : [
+		{
+		  "match" : "(\\\\(?:\\\\|\"|n|r))",
+		  "name" : "constant.character.escape.pipp"
+		},
+		{
+		  "match" : "([^\\x{0022}\\x{005c}]+)",
+		  "name" : "string.quoted.double.pipp"
+		}
+	  ]
+	},
+	"strings__2" : {
+	  "patterns" : [
+		{
+		  "match" : "(\\\\(?:\\\\|\"|n|r))",
+		  "name" : "constant.character.escape.pipp"
+		},
+		{
+		  "match" : "([^\\x{0027}\\x{005c}]+)",
+		  "name" : "string.quoted.single.pipp"
+		}
+	  ]
+	}
+}
+}

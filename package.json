@@ -1,0 +1,25 @@
+{
+  "name": "pipp-extension",
+  "displayName": "Pipp Extension",
+  "description": "Language support for Pipp, the Algol/Fortran/C/Rust inspired language.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "pipp",
+      "aliases": ["Pipp", "pipp"],
+      "extensions": [".pp",".pipp"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pipp",
+      "scopeName": "source.pipp",
+      "path": "./syntaxes/pipp.tmLanguage.json"
+    }]
+  }
+}
